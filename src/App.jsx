@@ -14,6 +14,8 @@ function App() {
   const [deadLine,setDeadLine] = useState(0)
   let i
   const currentime = new Date()
+
+
   
 
   
@@ -25,19 +27,21 @@ function App() {
     })
   }
   const handleDelete = (index) => {
-    setJobs(pre => {
-      const clone = [...pre]
-      clone.splice(index,1)
-      return clone
-    })
+      
+     var check = window.confirm('bạn muốn xóa?')
+    if (check) {
+      setJobs(pre => {
+        const clone = [...pre]
+        clone.splice(index,1)
+        return clone
+      })
+    }
   }
   useEffect(() => {
-        let jobDoneElement = document.querySelectorAll('.done')
-        setDone(jobDoneElement.length)
-        
-        let jobDeadLineElement = document.querySelectorAll('.deadline')
-        setDeadLine(jobDeadLineElement.length)
-      
+    let jobDoneElement = document.querySelectorAll('.done')
+    setDone(jobDoneElement.length)
+    let jobDeadLineElement = document.querySelectorAll('.deadline')
+    setDeadLine(jobDeadLineElement.length)
   },[jobs])
   const displayBtn = (index) => {
     i = index
@@ -67,11 +71,15 @@ function App() {
             value={time}
             type="date" 
             onInput={e => setTime(e.target.value)}
+            /> <br />
+      Search:<input 
+              type="text"  
             /> <br /> <br />
       {button ? 
         <Button value="Add" onClick={handleAdd}/> :
         <Button value="Update" onClick={() => handleUpdate(i)}/>
-      }
+      } <br />
+   
       <div>
         <table>
           <thead>
