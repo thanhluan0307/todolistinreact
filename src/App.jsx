@@ -13,7 +13,7 @@ function App() {
   const [done,setDone] = useState(0)
   const [deadLine,setDeadLine] = useState(0)
   const [searchJob,setSearchJob] = useState('')
-  const [Filter,setFilter] = useState('sum')
+  const [Filter,setFilter] = useState('done')
   let i
   const currentime = new Date()
   console.log(Filter)
@@ -85,7 +85,6 @@ function App() {
           id="12">
           <option value="done">Done</option>
           <option value="deadline">DeadLine</option>
-          <option value="sum">Sum</option>
       </select>
    
       <div>
