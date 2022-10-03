@@ -1,12 +1,17 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
+
 import './App.css';
 import Button from './comporoment/Button'
+import Header from './comporoment/Header'
+
 function App() {
   const [value,setValue] = useState('')
   const [time,setTime] = useState('')
   const [jobs,setJobs] = useState([])
   const [button,setButton] = useState(true)
+  const [done,setDone] = useState(0)
+  const [deadLine,setDeadLine] = useState(0)
   let i
   const currentime = new Date()
   
@@ -27,7 +32,12 @@ function App() {
     })
   }
   useEffect(() => {
-    
+        let jobDoneElement = document.querySelectorAll('.done')
+        setDone(jobDoneElement.length)
+        
+        let jobDeadLineElement = document.querySelectorAll('.deadline')
+        setDeadLine(jobDeadLineElement.length)
+      
   },[jobs])
   const displayBtn = (index) => {
     i = index
@@ -46,6 +56,8 @@ function App() {
   return (
 
     <div className='wrapper'>
+      <Header title="Công việc hoàn thành" data={done}/>
+      <Header title="Công việc deadline" data={deadLine}/>
       Jobs:<input 
             type="text" 
             value={value}
@@ -66,7 +78,7 @@ function App() {
             <tr>
               <th>Jobs</th>
               <th>Time</th>
-              <th></th>
+              <th>    </th>
             </tr>
           </thead>
           <tbody>

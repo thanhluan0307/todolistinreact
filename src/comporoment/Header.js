@@ -1,14 +1,9 @@
 
 function Header (props) {
-
-    return (
-    
+    return (   
         <>
-            <h1 className="header">Day la header : {props.data}</h1> 
-            
-        </>
-        
-        
+            <h1>{props.title}:{props.data}</h1>                       
+        </>       
     )
 }
 export default Header
